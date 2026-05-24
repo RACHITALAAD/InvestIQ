@@ -33,12 +33,12 @@ function Navbar() {
           <ul class="navbar-nav ms-auto align-items-center gap-lg-4">
             <li class="nav-item">
               <a class="nav-link fw-semibold" href="#">
-                Features
+                Home
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-semibold" href="#">
-                Insights
+                Features
               </a>
             </li>
             <li class="nav-item">
@@ -49,6 +49,11 @@ function Navbar() {
             <li class="nav-item">
               <a class="nav-link fw-semibold" href="#">
                 Markets
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#">
+                Contact
               </a>
             </li>
             <li class="nav-item">
