@@ -1,5 +1,6 @@
 import React from "react";
 import logoImage from "../assets/logo2.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -8,7 +9,10 @@ function Navbar() {
       style={{ backgroundColor: "#ffffff" }}
     >
       <div class="container">
-        <a class="navbar-brand d-flex align items-center fw-bold fs-4" href="#">
+        <Link
+          class="navbar-brand d-flex align items-center fw-bold fs-4"
+          to="/"
+        >
           <img
             src={logoImage}
             alt="InvestIQ Logo Image"
@@ -16,7 +20,7 @@ function Navbar() {
             style={{ width: "48px", marginRight: "10px" }}
           />
           <span style={{ color: "#002855" }}>InvestIQ</span>
-        </a>
+        </Link>
         <button
           class="navbar-toggler"
           type="button"
@@ -32,45 +36,48 @@ function Navbar() {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto align-items-center gap-lg-4">
             <li class="nav-item">
-              <a class="nav-link fw-semibold" href="#">
+              <Link class="nav-link fw-semibold" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-semibold" href="#">
+              <Link class="nav-link fw-semibold" to="/features">
                 Features
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-semibold" href="#">
+              <Link class="nav-link fw-semibold" to="/pricing">
                 Pricing
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-semibold" href="#">
+              <Link class="nav-link fw-semibold" to="/markets">
                 Markets
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-semibold" href="#">
+              <Link class="nav-link fw-semibold" to="/contact">
                 Contact
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-semibold" href="#">
+              <Link class="nav-link fw-semibold" to="/login">
                 Login
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <button
+              <Link
+                to="/signup"
                 className="btn btn-primary px-4 py-2 fw-semibold"
                 style={{
                   backgroundColor: "#387ed1",
                   border: "none",
+                  textDecoration: "none",
+                  color: "white",
                 }}
               >
                 Get Started
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
