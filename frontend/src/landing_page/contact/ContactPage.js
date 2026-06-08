@@ -1,8 +1,21 @@
 import React from 'react';
+import Hero from './Hero';
+import ContactForm from './ContactForm';
+import FAQ from './FAQ';
+import OpenAccount from '../OpenAccount';
+import ContactInfo from './ContactInfo';
 
 function ContactPage() {
     return (
-        <h1>contact</h1>
+        <>
+          <Hero/>
+          <ContactForm/>
+          <FAQ/>
+          <OpenAccount/>
+          {/* <ContactInfo/> */}
+
+        
+        </>
     );
 }
 
