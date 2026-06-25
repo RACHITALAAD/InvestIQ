@@ -70,7 +70,7 @@ function Navbar() {
                 to="/signup"
                 className="btn btn-primary px-4 py-2 fw-semibold"
                 style={{
-                  backgroundColor: "#387ed1",
+                  backgroundColor: "#008080",
                   border: "none",
                   textDecoration: "none",
                   color: "white",

@@ -9,24 +9,38 @@ import Markets from "./landing_page/markets/MarketPage";
 import Contact from "./landing_page/contact/ContactPage";
 import Login from "./landing_page/auth/Login";
 import Signup from "./landing_page/auth/Signup";
-import Footer from "./landing_page/Footer";
-import Navbar from "./landing_page/Navbar";
+// import Footer from "./landing_page/Footer";
+// import Navbar from "./landing_page/Navbar";
+import LandingLayout from "./landing_page/LandingLayout";
 import NotFound from "./landing_page/NotFound";
+import DashboardHome from "./dashboard/Home";
+import ProtectedRoute from "./dashboard/ProtectedRoute";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Navbar/>
+    {/* <Navbar /> */}
     <Routes>
-      <Route path="/" element={<HomePage />}></Route>
-      <Route path="/features" element={<Features />}></Route>
-      <Route path="/pricing" element={<Pricing />}></Route>
-      <Route path="/markets" element={<Markets />}></Route>
-      <Route path="/contact" element={<Contact />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/signup" element={<Signup />}></Route>
-      <Route path="*" element={<NotFound/>}></Route>
+      <Route element={<LandingLayout />}>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/features" element={<Features />}></Route>
+        <Route path="/pricing" element={<Pricing />}></Route>
+        <Route path="/markets" element={<Markets />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+      </Route>
+
+      <Route
+        path="/dashboard/*"
+        element={
+          <ProtectedRoute>
+            <DashboardHome />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<NotFound />}></Route>
     </Routes>
-    <Footer/>
+    {/* <Footer /> */}
   </BrowserRouter>,
 );
