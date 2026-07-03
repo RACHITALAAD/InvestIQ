@@ -1,58 +1,116 @@
 import React from "react";
-import { FaWallet, FaChartLine } from "react-icons/fa";
-import { PiChartBarFill } from "react-icons/pi";
-import { FaShieldAlt } from "react-icons/fa";
+
+import {
+  FaChartPie,
+  FaBriefcase,
+  FaClipboardList,
+  FaWallet,
+  FaChartLine,
+  FaUserCircle,
+} from "react-icons/fa";
 
 function CoreFeatures() {
   const features = [
     {
-      icon: <FaWallet />,
-      title: "Portfolio Management",
-      desc: "Track holdings , monitor performance and manage investments efficiently.",
+      icon: <FaChartPie />,
+      title: "Dashboard",
+      desc: "Get an overview of your portfolio, available funds, performance, and recent transactions in one place.",
     },
+
+    {
+      icon: <FaBriefcase />,
+      title: "Holdings",
+      desc: "View your current holdings, investment value, profit or loss, and manage buy or sell transactions.",
+    },
+
+    {
+      icon: <FaClipboardList />,
+      title: "Orders",
+      desc: "Review your complete order history, including stock details, quantity, price, and transaction status.",
+    },
+
+    {
+      icon: <FaWallet />,
+      title: "Funds",
+      desc: "Monitor your available balance, invested amount, and withdrawable funds from a single page.",
+    },
+
     {
       icon: <FaChartLine />,
-      title: "Market Intelligence",
-      desc: "Stay informed with stock trends, watchlists , and market insights.",
+      title: "Insights",
+      desc: "Analyze your portfolio with interactive charts that visualize asset allocation and investment performance.",
     },
+
     {
-      icon: <PiChartBarFill />,
-      title: "Analytics Dashboard",
-      desc: "Visualize investment growth and analyze performance with powerful charts.",
-    },
-    {
-      icon: <FaShieldAlt />,
-      title: "Secure Authentication",
-      desc: "Protect user accounts with secure login and authentication systems.",
+      icon: <FaUserCircle />,
+      title: "Profile",
+      desc: "Access your account information and view your investment profile in one secure location.",
     },
   ];
 
   return (
-    <div className="container py-5">
-      <div className="text-center mb-5">
-        <h2 className="fw-bold">Core Features</h2>
+    <section className="py-5">
+      <div className="container">
+        <div className="text-center mb-5">
+          <h2
+            className="fw-bold"
+            style={{
+              color: "#008080",
+              fontSize: "28px",
+            }}
+          >
+            Core Features
+          </h2>
 
-        <p className="text-muted">
-          Everything you need to manage investments smarter.
-        </p>
-      </div>
+          <p
+            className="text-muted mx-auto"
+            style={{
+              maxWidth: "700px",
+            }}
+          >
+            Explore the tools available to manage your portfolio, monitor funds,
+            track investments, and review your trading activity.
+          </p>
+        </div>
 
-      <div className="row g-4">
-        {features.map((feature, index) => (
-          <div className="col-md-6" key={index}>
-            <div className="border rounded p-4 h-100 shadow-sm">
-              <div className="mb-3 fs-2" style={{ color: "#387ed1" }}>
-                {feature.icon}
+        <div className="row g-4">
+          {features.map((feature, index) => (
+            <div className="col-lg-4 col-md-6" key={index}>
+              <div
+                className="bg-white rounded-4 shadow-sm h-100 p-4"
+                style={{
+                  transition: "0.3s ease",
+                }}
+              >
+                <div
+                  className="d-inline-flex justify-content-center align-items-center rounded-circle mb-4"
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    background: "#EAF8F8",
+                    color: "#008080",
+                    fontSize: "24px",
+                  }}
+                >
+                  {feature.icon}
+                </div>
+
+                <h5 className="fw-bold mb-3">{feature.title}</h5>
+
+                <p
+                  className="text-muted mb-0"
+                  style={{
+                    lineHeight: "1.7",
+                  }}
+                >
+                  {feature.desc}
+                </p>
               </div>
-
-              <h4 className="fw-bold">{feature.title}</h4>
-
-              <p className="text-muted">{feature.desc}</p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

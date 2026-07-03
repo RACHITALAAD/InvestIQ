@@ -1,31 +1,100 @@
-import React from 'react';
-import heroImage from '../../assets/HomeSection.jpg';
+import React from "react";
+import { Link } from "react-router-dom";
+import heroImage from "../../assets/dashboard.png";
 
 function HeroSection() {
-    return (
-        <div className='container p-5'>
-            <div className='row align-items-center'>
-                <div className='col-md-6'>
-                    <h1 className='fw-bold mb-4'>
-                        Invest Smarter and Grow Faster.
-                    </h1>
+  return (
+    <section
+      className="py-5"
+      style={{
+        background: "#F8FCFC",
+      }}
+    >
+      <div className="container">
+        <div className="row align-items-center gy-5">
+          {/* Left */}
+          <div className="col-lg-6">
+            <span
+              className="badge rounded-pill px-3 py-2 mb-3"
+              style={{
+                background: "#E7F7F7",
+                color: "#008080",
+                fontWeight: "600",
+              }}
+            >
+              Virtual Investment Platform
+            </span>
 
-                    <p className='text-muted mb-4'>
-                        A modern investment platform for portfolio tracking,
-                        market analysis, and intelligent trading insights.
-                    </p>
+            <h1
+              className="fw-bold mb-4"
+              style={{
+                fontSize: "2rem",
+                lineHeight: "1.25",
+                color: "#1F2937",
+              }}
+            >
+              Invest Smarter
+              <br />
+              Track Better
+            </h1>
 
-                    <button className='btn btn-primary btn-lg'>
-                        Get Started
-                    </button>
-                </div>
+            <p
+              className="text-muted mb-4"
+              style={{
+                maxWidth: "500px",
+                fontSize: "1rem",
+                lineHeight: "1.8",
+              }}
+            >
+              Manage your portfolio, monitor holdings, and track your
+              investments through a simple and intuitive dashboard.
+            </p>
 
-                <div className='col-md-6 text-center'>
-                    <img src={heroImage} alt="Hero Image" className='img' style={{width: "90%"}}/>
-                </div>
+            <div className="d-flex gap-3">
+              <Link
+                to="/signup"
+                className="btn px-4 py-2"
+                style={{
+                  background: "#008080",
+                  color: "#fff",
+                  border: "none",
+                  fontWeight: "600",
+                  borderRadius: "10px",
+                }}
+              >
+                Get Started
+              </Link>
+
+              <Link
+                to="/login"
+                className="btn px-4 py-2"
+                style={{
+                  border: "2px solid #008080",
+                  color: "#008080",
+                  fontWeight: "600",
+                  borderRadius: "10px",
+                }}
+              >
+                Login
+              </Link>
             </div>
+          </div>
+
+          {/* Right */}
+          <div className="col-lg-6 text-center">
+            <img
+              src={heroImage}
+              alt="InvestIQ Dashboard"
+              className="img-fluid shadow-lg rounded-4"
+              style={{
+                maxWidth: "95%",
+              }}
+            />
+          </div>
         </div>
-    );
+      </div>
+    </section>
+  );
 }
 
 export default HeroSection;

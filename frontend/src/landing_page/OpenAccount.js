@@ -1,25 +1,58 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function OpenAccount() {
   return (
-    <div className="container p-5 text-center">
-      <h1 className="mb-4 fw-bold" style={{fontSize: "2rem"}}>Start Your Investment Journey Today</h1>
-       <p
-        className="text-muted mb-4"
-        style={{
-          maxWidth: "700px",
-          margin: "0 auto"
-        }}
-      >
-        Smart investing tools designed for modern investors.
-      </p>
-      <button
-        className="btn btn-primary px-4 py-2"
-        style={{ backgroundColor: "#387ed1" ,border: "none" , fontSize: "1rem" , borderRadius: "8px"}}
-      >
-        Create Free Account
-      </button>
-    </div>
+    <section
+      className="py-5"
+      style={{
+        backgroundColor: "#F7FBFB",
+      }}
+    >
+      <div className="container">
+        <div
+          className="bg-white shadow-sm rounded-4 text-center mx-auto p-5"
+          style={{
+            maxWidth: "850px",
+          }}
+        >
+          <h2
+            className="fw-bold mb-3"
+            style={{
+              fontSize: "25px",
+              color: "#008080",
+            }}
+          >
+            Ready to Get Started?
+          </h2>
+
+          <p
+            className="text-muted mb-4"
+            style={{
+              maxWidth: "600px",
+              margin: "0 auto",
+              lineHeight: "1.7",
+            }}
+          >
+            Create your free InvestIQ account and start managing your portfolio
+            with a simple and intuitive investment dashboard
+          </p>
+
+          <Link
+            to="/signup"
+            className="btn px-4 py-2 fw-semibold"
+            style={{
+              backgroundColor: "#008080",
+              color: "#fff",
+              borderRadius: "10px",
+              border: "none",
+            }}
+          >
+            Create Free Account
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 

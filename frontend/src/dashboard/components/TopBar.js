@@ -1,5 +1,4 @@
 import React from "react";
-import { FaSearch, FaBell, FaUserCircle } from "react-icons/fa";
 
 function TopBar() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
@@ -7,45 +6,36 @@ function TopBar() {
   const userName = user.userName || "Investor";
 
   return (
-    <div className="d-flex justify-content-between align-items-center px-4 py-3 bg-white border-bottom">
+    <div
+      className="d-flex align-items-center px-4"
+      style={{
+        height: "92px",
+        background: "#FFFFFF",
+        borderBottom: "1px solid #E5E7EB",
+      }}
+    >
       <div>
-        <h3 className="fw-bold mb-1">
-          👋Hello, {userName}
-        </h3>
+        <h2
+          style={{
+            fontSize: "24px",
+            fontWeight: 700,
+            color: "#1F2937",
+            marginBottom: "8px",
+          }}
+        >
+          👋 Hello, {userName}
+        </h2>
 
-        <p className="text-muted mb-0">
+        <p
+          style={{
+            fontSize: "15px",
+            fontWeight: 400,
+            color: "#454952",
+            marginBottom: 0,
+          }}
+        >
           Welcome back to InvestIQ Dashboard
         </p>
-      </div>
-
-      <div className="d-flex align-items-center gap-4">
-        <div
-          className="d-flex align-items-center px-3 py-2 border rounded"
-          style={{ width: "280px" }}
-        >
-          <FaSearch className="text-muted me-2" />
-
-          <input
-            type="text"
-            placeholder="Search stocks..."
-            className="border-0 w-100 bg-transparent"
-            style={{ outline: "none", 
-                boxShadow : "none",
-            }}
-          />
-        </div>
-
-        <FaBell
-          size={22}
-          className="text-secondary"
-          style={{ cursor: "pointer" }}
-        />
-
-        <FaUserCircle
-          size={34}
-          className="text-primary"
-          style={{ cursor: "pointer" }}
-        />
       </div>
     </div>
   );

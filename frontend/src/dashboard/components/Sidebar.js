@@ -6,6 +6,7 @@ import { RiExchangeFundsFill } from "react-icons/ri";
 import {
   FaChartPie,
   FaBriefcase,
+  FaChartBar,
   FaChartLine,
   FaClipboardList,
   FaWallet,
@@ -34,6 +35,11 @@ function Sidebar() {
       name: "Dashboard",
       path: "/dashboard",
       icon: <RiDashboardHorizontalFill />,
+    },
+    {
+      name: "Market",
+      path: "/dashboard/market",
+      icon: <FaChartBar />,
     },
     {
       name: "Holdings",
@@ -114,49 +120,6 @@ function Sidebar() {
         </ul>
       </div>
 
-      <div>
-        <div
-          className="p-3 rounded-4 mb-3"
-          style={{
-            background: "linear-gradient(135deg, #002855, #0F766E)",
-            color: "white",
-            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-          }}
-        >
-          <div className="d-flex align-items-center">
-            <div
-              className="rounded-circle d-flex align-items-center justify-content-center me-3"
-              style={{
-                width: "38px",
-                height: "38px",
-                backgroundColor: "rgba(255,255,255,0.2)",
-                fontWeight: "bold",
-                fontSize: "20px",
-              }}
-            >
-              {user?.userName?.charAt(0)?.toUpperCase()}
-            </div>
-
-            <div>
-              <h6 className="fw-bold">{user?.userName || "User"}</h6>
-
-              <small style={{ opacity: "0.85" }}>Investor</small>
-            </div>
-          </div>
-
-          <div
-            style={{
-              height: "1px",
-              backgroundColor: "rgba(255,255,255,0.2)",
-              marginBottom: "12px",
-            }}
-          />
-
-          <small style={{ opacity: "0.8" }}>Portfolio Value</small>
-
-          <h5 className="fw-bold mb-0">₹1,24,500</h5>
-        </div>
-
         <button
           onClick={logout}
           className="btn w-100 d-flex align-items-center justify-content-center"
@@ -173,7 +136,6 @@ function Sidebar() {
           Logout
         </button>
       </div>
-    </div>
   );
 }
 

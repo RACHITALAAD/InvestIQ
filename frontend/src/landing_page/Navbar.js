@@ -46,16 +46,6 @@ function Navbar() {
               </Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link fw-semibold" to="/pricing">
-                Pricing
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link fw-semibold" to="/markets">
-                Markets
-              </Link>
-            </li>
-            <li class="nav-item">
               <Link class="nav-link fw-semibold" to="/contact">
                 Contact
               </Link>

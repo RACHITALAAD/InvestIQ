@@ -1,61 +1,106 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
+
 import Summary from "../components/Summary";
-import WatchList from "../components/WatchList";
-import MarketOverview from "../components/MarketOverview";
 import PortfolioChart from "../charts/PortfolioChart";
-import AssetAllocation from "../charts/AssetAllocationChart";
-import { topMovers } from "../../data/dashboardData";
+import AssetAllocationChart from "../charts/AssetAllocationChart";
+import RecentTransactions from "../components/RecentTransactions";
+
+import { getDashboardData } from "../../api/dashboard";
 
 function Dashboard() {
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const fetchDashboard = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const { data } = await getDashboardData();
+
+      setDashboardData(data);
+    } catch (error) {
+      console.error(error);
+      setError("Unable to load dashboard.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchDashboard();
+  }, [fetchDashboard]);
+
+  if (loading) {
+    return (
+      <div className="container-fluid p-4">
+        <h4>Loading Dashboard...</h4>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container-fluid p-4">
+        <div className="alert alert-danger">{error}</div>
+
+        <button className="btn btn-primary" onClick={fetchDashboard}>
+          Retry
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="container-fluid p-4">
-      <Summary />
+      {/* Page Heading */}
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2
+            style={{
+              fontSize: "28px",
+              fontWeight: 700,
+              color: "#1F2937",
+              marginBottom: "6px",
+            }}
+          >
+            Dashboard
+          </h2>
 
-      <div className="mt-4">
-        <MarketOverview />
+          <p
+            style={{
+              fontSize: "16px",
+              fontWeight: 400,
+              color: "#6B7280",
+              marginBottom: 0,
+            }}
+          >
+            Monitor your portfolio performance and recent trading activity.
+          </p>
+        </div>
+
+        <button className="btn btn-outline-primary" onClick={fetchDashboard}>
+          Refresh
+        </button>
       </div>
 
+      {/* Summary Cards */}
+      <Summary data={dashboardData.summary} />
+
+      {/* Charts */}
       <div className="row mt-4">
-        <div className="col-lg-8">
-          <PortfolioChart />
+        <div className="col-lg-8 mb-4">
+          <PortfolioChart holdings={dashboardData.holdings} />
         </div>
 
-        <div className="col-lg-4">
-          <AssetAllocation />
-        </div>
-      </div>
-
-      <div className="row mt-4">
-        <div className="col-lg-4">
-          <WatchList />
-        </div>
-
-        <div className="col-lg-8">
-          <div className="bg-white p-4 rounded shadow-sm h-100">
-            <h4 className="fw-bold mb-4">Top Movers</h4>
-
-            <div className="row g-3">
-              {topMovers.map((stock, index) => (
-                <div className="col-md-4" key={index}>
-                  <div className="border rounded p-3">
-                    <h6 className="fw-bold">{stock.stock}</h6>
-
-                    <p
-                      className={
-                        stock.change.startsWith("+")
-                          ? "text-success fw-bold mb-0"
-                          : "text-danger fw-bold mb-0"
-                      }
-                    >
-                      {stock.change}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="col-lg-4 mb-4">
+          <AssetAllocationChart holdings={dashboardData.holdings} />
         </div>
       </div>
+
+      {/* Recent Orders */}
+      <RecentTransactions orders={dashboardData.recentOrders} />
     </div>
   );
 }

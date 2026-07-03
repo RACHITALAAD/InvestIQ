@@ -8,6 +8,7 @@ import Orders from "./pages/Orders";
 import Funds from "./pages/Funds";
 import Insights from "./pages/Insights";
 import Profile from "./pages/Profile";
+import Market from "./pages/Market";
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
           <Route path="funds" element={<Funds />} />
           <Route path="insights" element={<Insights />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="market" element={<Market />} />
         </Routes>
       </div>
     </div>

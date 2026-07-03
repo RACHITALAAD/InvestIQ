@@ -1,71 +1,124 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ContactForm() {
-  return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
-          <div className="border rounded shadow-sm p-5">
-            <div className="text-center mb-4">
-              <h2 className="fw-bold">Send Us a Message</h2>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-              <p className="text-muted">
-                Have a question or feedback? We'd love to hear from you.
-              </p>
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill all the fields.");
+      return;
+    }
+
+    alert("Thank you for reaching out! Your message has been received.");
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
+
+  return (
+    <section
+      style={{
+        background: "#F7FBFB",
+        padding: "70px 0",
+      }}
+    >
+      <div className="container d-flex justify-content-center">
+        <div
+          className="bg-white shadow-sm rounded-4 p-5"
+          style={{
+            maxWidth: "498px",
+            width: "100%",
+          }}
+        >
+          <div className="text-center mb-4">
+            <h2
+              className="fw-bold"
+              style={{
+                fontSize: "28px",
+                color: "#008080",
+              }}
+            >
+              Contact InvestIQ
+            </h2>
+
+            <p className="text-muted mb-0">
+              Have a question or feedback? Fill out the form below
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label className="form-label fw-semibold">Full Name</label>
+
+              <input
+                type="text"
+                className="form-control"
+                name="name"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={handleChange}
+              />
             </div>
 
-            <form>
-              <div className="row">
-                <div className="col-md-6 mb-3">
-                  <label className="form-label fw-semibold">Full Name</label>
+            <div className="mb-3">
+              <label className="form-label fw-semibold">Email Address</label>
 
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter your name"
-                  />
-                </div>
+              <input
+                type="email"
+                className="form-control"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
 
-                <div className="col-md-6 mb-3">
-                  <label className="form-label fw-semibold">
-                    Email Address
-                  </label>
+            <div className="mb-4">
+              <label className="form-label fw-semibold">Message</label>
 
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Enter your email"
-                  />
-                </div>
-              </div>
+              <textarea
+                rows="5"
+                className="form-control"
+                name="message"
+                placeholder="Tell us how we can help you..."
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+            </div>
 
-              <div className="mb-4">
-                <label className="form-label fw-semibold">Message</label>
-
-                <textarea
-                  rows="6"
-                  className="form-control"
-                  placeholder="Write your message..."
-                ></textarea>
-              </div>
-
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn btn-primary px-5 py-2"
-                  style={{
-                    backgroundColor: "#387ed1",
-                    border: "none",
-                  }}
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="btn w-100 fw-semibold"
+              style={{
+                backgroundColor: "#008080",
+                color: "#fff",
+                padding: "12px",
+                border: "none",
+                borderRadius: "10px",
+              }}
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
