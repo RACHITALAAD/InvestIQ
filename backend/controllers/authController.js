@@ -1,14 +1,27 @@
 const User = require("../models/User");
+const Fund = require("../models/Fund");
+const Holding = require("../models/Holding");
+const Order = require("../models/Order");
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Fund = require("../models/Fund");
 
 const signup = async (req, res) => {
   try {
     const { userName, email, password } = req.body;
+
+    if (!userName || !email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Please fill all required fields",
+      });
+    }
+
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
       return res.status(400).json({
+        success: false,
         message: "User already exists",
       });
     }
@@ -20,7 +33,6 @@ const signup = async (req, res) => {
       password: hashedPassword,
     });
 
-    // Create default funds for new user
     await Fund.create({
       userId: user._id,
       availableBalance: 20000,
@@ -29,11 +41,17 @@ const signup = async (req, res) => {
     });
 
     res.status(201).json({
+      success: true,
       message: "User created successfully",
-      user,
+      user: {
+        id: user._id,
+        userName: user.userName,
+        email: user.email,
+      },
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }
@@ -43,15 +61,27 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Please fill all required fields",
+      });
+    }
+
     const existingUser = await User.findOne({ email });
+    
     if (!existingUser) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
     }
 
     const isMatch = await bcrypt.compare(password, existingUser.password);
     if (!isMatch) {
       return res.status(400).json({
-        message: "Invalid details",
+        success: false,
+        message: "Invalid Email or Password",
       });
     }
 
@@ -67,6 +97,7 @@ const login = async (req, res) => {
     );
 
     res.status(200).json({
+      success: true,
       message: "Login Successful",
       token,
       user: {
@@ -77,6 +108,7 @@ const login = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }
@@ -84,15 +116,51 @@ const login = async (req, res) => {
 
 const getProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId).select("-password");
+    const userId = req.user.userId;
+    const user = await User.findById(userId).select("-password");
     if (!user) {
       return res.status(404).json({
+        success: false,
         message: "User not found",
       });
     }
-    res.status(200).json(user);
+
+    const fund = await Fund.findOne({ userId });
+
+    const holdings = await Holding.find({ userId });
+
+    const totalOrders = await Order.countDocuments({ userId });
+
+    let portfolioValue = 0;
+
+    holdings.forEach((holding) => {
+      portfolioValue += holding.quantity * holding.currentPrice;
+    });
+
+    res.status(200).json({
+      success: true,
+
+      profile: {
+        id: user._id,
+
+        userName: user.userName,
+
+        email: user.email,
+
+        createdAt: user.createdAt,
+
+        availableFunds: fund?.availableBalance || 0,
+
+        portfolioValue,
+
+        holdingsCount: holdings.length,
+
+        totalOrders,
+      },
+    });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }

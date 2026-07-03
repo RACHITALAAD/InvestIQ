@@ -16,12 +16,12 @@ const orderSchema = new mongoose.Schema(
     type: {
       type: String,
       enum: ["BUY", "SELL"],
-      requied: true,
+      required: true,
     },
 
     quantity: {
       type: Number,
-      requied: true,
+      required: true,
     },
 
     price: {

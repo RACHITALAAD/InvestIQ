@@ -1,37 +1,53 @@
 const Holding = require("../models/Holding");
 const Fund = require("../models/Fund");
+const Order = require("../models/Order");
 
 const getDashboardData = async (req, res) => {
   try {
     const userId = req.user.userId;
-    const holdings = await Holdings.find({ userId });
-    const funds = await Fund.findOne({ userId });
+    const holdings = await Holding.find({ userId }).sort({ stock: 1 });
+
+    const fund = await Fund.findOne({ userId });
+
+    const recentOrders = await Order.find({ userId })
+      .sort({ createdAt: -1 })
+      .limit(5);
 
     let portfolioValue = 0;
-    let totalInvestment = 0;
+    let investedAmount = 0;
 
     holdings.forEach((holding) => {
-      portfolioValue = portfolioValue + holding.quantity * holding.currentPrice;
-
-      totalInvestment = totalInvestment + holding.quantity * holding.avgPrice;
+      portfolioValue += holding.quantity * holding.currentPrice;
+      investedAmount += holding.quantity * holding.avgPrice;
     });
 
-    const todaysGain = portfolioValue - totalInvestment;
+    const totalProfit = portfolioValue - investedAmount;
 
-    res
-      .status(200)
-      .json({
+    res.status(200).json({
+      success: true,
+
+      summary: {
         portfolioValue,
-        todaysGain,
-        availableFunds: funds?.availableBalance || 0,
+        investedAmount,
+        totalProfit,
+        availableFunds: fund ? fund.availableBalance : 0,
         holdingsCount: holdings.length,
-        holdings,
-      });
+      },
+
+      holdings,
+
+      recentOrders,
+    });
   } catch (error) {
+    console.error("Dashboard Error:", error);
+
     res.status(500).json({
-      message: error.message,
+      success: false,
+      message: "Unable to load dashboard data.",
     });
   }
 };
 
-module.exports = { getDashboardData };
+module.exports = {
+  getDashboardData,
+};

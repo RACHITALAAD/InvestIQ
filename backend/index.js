@@ -2,13 +2,16 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors');
+const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
-const authMiddleware = require('./middleware/authMiddleware')
+const authMiddleware = require("./middleware/authMiddleware");
 const holdingRoutes = require("./routes/holdings");
 const ordersRoutes = require("./routes/orders");
 const fundsRoutes = require("./routes/funds");
+const tradeRoutes = require("./routes/trade");
+const marketRoutes = require("./routes/market");
+const insightsRoutes = require("./routes/insightsRoutes");
 
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
@@ -17,11 +20,14 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use("/api/auth" , authRoutes);
-app.use("/api/dashboard" , dashboardRoutes);
-app.use("/api/holdings" , holdingRoutes);
-app.use("/api/orders" , ordersRoutes);
-app.use("/api/funds" , fundsRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/holdings", holdingRoutes);
+app.use("/api/orders", ordersRoutes);
+app.use("/api/funds", fundsRoutes);
+app.use("/api/trade", tradeRoutes);
+app.use("/api/market", marketRoutes);
+app.use("/api/insights", insightsRoutes);
 
 mongoose
   .connect(uri)
@@ -33,13 +39,13 @@ mongoose
     console.log(err);
   });
 
-app.get("/" , (req , res)=>{
-    res.send("InvestIQ Backend Running");
+app.get("/", (req, res) => {
+  res.send("InvestIQ Backend Running.....");
 });
 
-app.get("/api/dashboard" , authMiddleware , (req , res) => {
+app.get("/api/dashboard", authMiddleware, (req, res) => {
   res.json({
-    message : "Welcome to InvestIQ Dashboard!",
+    message: "Welcome to InvestIQ Dashboard!",
     user: req.user,
   });
 });

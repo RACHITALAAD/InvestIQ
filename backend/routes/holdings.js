@@ -3,9 +3,8 @@ const router = express.Router();
 
 const authMiddleware = require("../middleware/authMiddleware");
 
-const {getHoldings , addHolding} = require("../controllers/holdingsController");
+const {getHoldings} = require("../controllers/holdingsController");
 
 router.get("/" , authMiddleware , getHoldings);
-router.post("/" , authMiddleware , addHolding);
 
 module.exports = router;

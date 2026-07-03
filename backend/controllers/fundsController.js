@@ -5,6 +5,12 @@ const getFunds = async (req , res) => {
         const funds = await Fund.findOne({
             userId: req.user.userId
         });
+
+        if(!funds){
+            return res.status(404).json({
+                message: "Fund account not found",
+            });
+        }
         res.status(200).json(funds);
     }
     catch(error){
@@ -16,7 +22,7 @@ const getFunds = async (req , res) => {
 
 const updateFunds = async (req , res) => {
     try{
-        const {availableBalance , investAmount , withdrawableAmount} = req.body;
+        const {availableBalance , investedAmount ,  withdrawableAmount} = req.body;
         let funds = await Fund.findOne({
             userId: req.user.userId
         });
@@ -26,11 +32,11 @@ const updateFunds = async (req , res) => {
                 userId: req.user.userId,
                 availableBalance,
                 investedAmount,
-                withdrawableAmount
+                withdrawableAmount,
             });
         }else{
             funds.availableBalance = availableBalance;
-            funds.investedAmount = investAmount;
+            funds.investedAmount = investedAmount;
             funds.withdrawableAmount = withdrawableAmount;
 
             await funds.save();

@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://localhost:3002/api",
+    baseURL: "http://localhost:3002/api/funds",
 });
 
 API.interceptors.request.use((req) => {
@@ -14,6 +14,5 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-export const getDashboardData = () => {
-    return API.get("/dashboard");
-}
+export const getFunds = () => API.get("/");
+export const updateFunds = (data) => API.put("/" , data);
