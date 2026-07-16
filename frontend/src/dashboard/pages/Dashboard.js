@@ -34,18 +34,47 @@ function Dashboard() {
 
   if (loading) {
     return (
-      <div className="container-fluid p-4">
-        <h4>Loading Dashboard...</h4>
+      <div
+        className="container-fluid p-4"
+        style={{
+          backgroundColor: "#F8FAFC",
+          minHeight: "100vh",
+        }}
+      >
+        <h4
+          style={{
+            color: "#1F2937",
+            fontWeight: 600,
+          }}
+        >
+          Loading Dashboard...
+        </h4>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="container-fluid p-4">
+      <div
+        className="container-fluid p-4"
+        style={{
+          backgroundColor: "#F8FAFC",
+          minHeight: "100vh",
+        }}
+      >
         <div className="alert alert-danger">{error}</div>
 
-        <button className="btn btn-primary" onClick={fetchDashboard}>
+        <button
+          className="btn"
+          onClick={fetchDashboard}
+          style={{
+            backgroundColor: "#008080",
+            color: "#fff",
+            borderRadius: "10px",
+            padding: "8px 20px",
+            fontWeight: 500,
+          }}
+        >
           Retry
         </button>
       </div>
@@ -53,8 +82,13 @@ function Dashboard() {
   }
 
   return (
-    <div className="container-fluid p-4">
-      {/* Page Heading */}
+    <div
+      className="container-fluid p-4"
+      style={{
+        backgroundColor: "#F8FAFC",
+        minHeight: "100vh",
+      }}
+    >
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div>
           <h2
@@ -80,7 +114,18 @@ function Dashboard() {
           </p>
         </div>
 
-        <button className="btn btn-outline-primary" onClick={fetchDashboard}>
+        <button
+          className="btn"
+          onClick={fetchDashboard}
+          style={{
+            border: "1px solid #008080",
+            color: "#008080",
+            borderRadius: "10px",
+            padding: "8px 18px",
+            fontWeight: 500,
+            backgroundColor: "#FFFFFF",
+          }}
+        >
           Refresh
         </button>
       </div>

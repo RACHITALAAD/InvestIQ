@@ -16,19 +16,6 @@ function PortfolioChart({ holdings }) {
       value: stock.quantity * stock.currentPrice,
     })) || [];
 
-  if (data.length === 0) {
-    return (
-      <div className="bg-white rounded-4 shadow-sm p-4 h-100 d-flex justify-content-center align-items-center">
-        <div className="text-center">
-          <h5 className="fw-bold">Portfolio Overview</h5>
-          <p className="text-muted mb-0">
-            No holdings available to display the chart.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   const formatAmount = (value) => {
     if (value >= 100000) {
       return `${(value / 100000).toFixed(1)}L`;
@@ -41,31 +28,89 @@ function PortfolioChart({ holdings }) {
     return value;
   };
 
+  if (data.length === 0) {
+    return (
+      <div className="bg-white rounded-4 shadow-sm p-4 h-100 d-flex justify-content-center align-items-center">
+        <div className="text-center">
+          <h5
+            style={{
+              color: "#1F2937",
+              fontWeight: 600,
+            }}
+          >
+            Portfolio Overview
+          </h5>
+          <p
+            className="mb-0"
+            style={{
+              color: "#6B7280",
+            }}
+          >
+            No holdings available to display the chart.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white rounded-4 shadow-sm p-4 h-100">
       <div className="mb-4">
-        <h4 className="fw-bold mb-1">Portfolio Overview</h4>
+        <h4
+          style={{
+            color: "#1F2937",
+            fontWeight: 700,
+            marginBottom: "4px",
+          }}
+        >
+          Portfolio Overview
+        </h4>
 
-        <small className="text-muted">
+        <p
+          className="mb-0"
+          style={{
+            color: "#6B7280",
+            fontSize: "14px",
+          }}
+        >
           Current market value of your holdings
-        </small>
+        </p>
       </div>
 
       <ResponsiveContainer width="100%" height={320}>
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <CartesianGrid
+            stroke="#E5E7EB"
+            strokeDasharray="3 3"
+            vertical={false}
+          />
 
           <XAxis
             dataKey="name"
-            tick={{ fontSize: 12 }}
+            tick={{
+              fontSize: 12,
+              fill: "#6B7280",
+            }}
+            axisLine={true}
+            tickLine={true}
           />
 
           <YAxis
             tickFormatter={formatAmount}
-            tick={{ fontSize: 12 }}
+            tick={{
+              fontSize: 12,
+              fill: "#6B7280",
+            }}
+            axisLine={true}
+            tickLine={true}
           />
 
           <Tooltip
+            contentStyle={{
+              borderRadius: "12px",
+              border: "1px solid #E5E7EB",
+              boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            }}
             formatter={(value) => [
               `₹ ${Number(value).toLocaleString()}`,
               "Current Value",
@@ -75,10 +120,16 @@ function PortfolioChart({ holdings }) {
           <Line
             type="monotone"
             dataKey="value"
-            stroke="#0d6efd"
+            stroke="#008080"
             strokeWidth={3}
-            dot={{ r: 4 }}
-            activeDot={{ r: 6 }}
+            dot={{
+              r: 4,
+              fill: "#008080",
+            }}
+            activeDot={{
+              r: 6,
+              fill: "#008080",
+            }}
           />
         </LineChart>
       </ResponsiveContainer>

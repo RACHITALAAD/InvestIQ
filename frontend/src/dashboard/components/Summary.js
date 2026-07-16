@@ -6,7 +6,14 @@ function Summary({ data }) {
   if (!data) {
     return (
       <div className="text-center py-5">
-        <h5>Loading Summary...</h5>
+        <h5
+          style={{
+            color: "#1F2937",
+            fontWeight: 600,
+          }}
+        >
+          Loading Summary...
+        </h5>
       </div>
     );
   }
@@ -15,32 +22,34 @@ function Summary({ data }) {
     {
       title: "Portfolio Value",
       value: data.portfolioValue,
-      icon: <FaWallet size={28} className="text-primary" />,
-      bg: "#EEF6FF",
+      icon: <FaWallet size={28} style={{ color: "#008080" }} />,
+      bg: "#EAF8F8",
     },
     {
       title: "Profit / Loss",
-      value: data.profitLoss,
+      value: data.totalProfit,
       icon: (
         <FaChartLine
           size={28}
-          className={data.profitLoss >= 0 ? "text-success" : "text-danger"}
+          className={data.totalProfit >= 0 ? "text-success" : "text-danger"}
         />
       ),
-      bg: "#F1FFF4",
-      color: data.profitLoss >= 0 ? "text-success" : "text-danger",
+      bg:  "#EEF8F0",
+      color: data.totalProfit >= 0 ? "#198754" : "#DC3545",
     },
     {
       title: "Available Funds",
       value: data.availableFunds,
       icon: <FaCoins size={28} className="text-warning" />,
-      bg: "#FFF9EA",
+      bg: "#FFF8E8",
     },
     {
       title: "Holdings",
-      value: `${data.holdingsCount} Stocks`,
-      icon: <FaBriefcase size={28} className="text-secondary" />,
-      bg: "#F4F1FF",
+      value: `${data.holdingsCount} ${
+        data.holdingsCount === 1 ? "Stock" : "Stocks"
+      }`,
+      icon: <FaBriefcase size={28} style={{ color: "#6C757D" }} />,
+      bg: "#F3F6FA",
     },
   ];
 
@@ -52,8 +61,8 @@ function Summary({ data }) {
             className="rounded-4 shadow-sm border-0 h-100 p-4"
             style={{
               backgroundColor: card.bg,
-              transition: "all 0.3s ease",
               cursor: "pointer",
+              transition: "transform 0.25s ease, box-shadow 0.25s ease",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-4px)";
@@ -65,14 +74,15 @@ function Summary({ data }) {
             }}
           >
             {/* Icon + Title */}
-            <div className="d-flex align-items-center gap-2">
+            <div className="d-flex align-items-center gap-3">
               {card.icon}
 
               <small
-                className="text-muted"
+                className="mb-0"
                 style={{
-                  fontSize: "18px",
+                  fontSize: "16px",
                   fontWeight: 500,
+                   color: "#6B7280",
                 }}
               >
                 {card.title}
@@ -80,12 +90,12 @@ function Summary({ data }) {
             </div>
 
             {/* Value */}
-            <h4
-              className={`mt-3 mb-0 ${card.color || ""}`}
+             <h4
+              className="mt-3 mb-0"
               style={{
-                fontSize: "25px",
-                fontWeight: 550,
-                color: card.color ? undefined : "#1F2937",
+                fontSize: "26px",
+                fontWeight: 700,
+                color: card.color || "#1F2937",
               }}
             >
               {typeof card.value === "number" ? (

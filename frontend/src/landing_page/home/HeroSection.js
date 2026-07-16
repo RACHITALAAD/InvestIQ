@@ -46,8 +46,8 @@ function HeroSection() {
                 lineHeight: "1.8",
               }}
             >
-              Manage your portfolio, monitor holdings, and track your
-              investments through a simple and intuitive dashboard.
+              Manage your portfolio, monitor your holdings, and track your
+              investments through a simple and intuitive dashboard
             </p>
 
             <div className="d-flex gap-3">

@@ -8,14 +8,19 @@ const getFunds = async (req , res) => {
 
         if(!funds){
             return res.status(404).json({
-                message: "Fund account not found",
+                success: false,
+                message: "Fund account not found.",
             });
         }
-        res.status(200).json(funds);
+        res.status(200).json({
+            success: true,
+            funds,
+        });
     }
     catch(error){
         res.status(500).json({
-            message: error.message,
+            success: false,
+            message: "Unable to fetch funds.",
         });
     }
 };
@@ -23,6 +28,13 @@ const getFunds = async (req , res) => {
 const updateFunds = async (req , res) => {
     try{
         const {availableBalance , investedAmount ,  withdrawableAmount} = req.body;
+        if(availableBalance < 0 || investedAmount < 0 || withdrawableAmount < 0){
+            return res.status(400).json({
+                success: false,
+                message: "Amounts cannot be negative.",
+            });
+        }
+
         let funds = await Fund.findOne({
             userId: req.user.userId
         });
@@ -41,11 +53,15 @@ const updateFunds = async (req , res) => {
 
             await funds.save();
         }
-        res.status(200).json(funds);
-    }
-    catch(error){
+        res.status(200).json({
+            success: true,
+            message: "Funds updated successfully.",
+            funds,
+        });
+    }catch(error){
         res.status(500).json({
-            message: error.message
+            success: false,
+            message: "Unable to update funds.",
         });
     }
 };

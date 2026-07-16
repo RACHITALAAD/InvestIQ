@@ -4,17 +4,45 @@ import { MdCurrencyRupee } from "react-icons/md";
 function RecentTransactions({ orders = [] }) {
   return (
     <div className="bg-white rounded-4 shadow-sm p-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <h4 className="fw-bold mb-1">Recent Transactions</h4>
-          <small className="text-muted">Last 5 completed trades</small>
-        </div>
+      <div className="mb-4">
+        <h4
+          style={{
+            color: "#1F2937",
+            fontWeight: 700,
+            marginBottom: "4px",
+          }}
+        >
+          Recent Transactions
+        </h4>
+
+        <p
+          className="mb-0"
+          style={{
+            color: "#6B7280",
+            fontSize: "14px",
+          }}
+        >
+          Last 5 completed trades
+        </p>
       </div>
 
       {orders.length === 0 ? (
         <div className="text-center py-5">
-          <h6 className="fw-bold">No Transactions Found</h6>
-          <p className="text-muted mb-0">
+          <h5
+            style={{
+              color: "#1F2937",
+              fontWeight: 600,
+            }}
+          >
+            No Transactions Found
+          </h5>
+
+          <p
+            className="mb-0"
+            style={{
+              color: "#6B7280",
+            }}
+          >
             Your recent trades will appear here.
           </p>
         </div>
@@ -51,30 +79,63 @@ function RecentTransactions({ orders = [] }) {
                   <td>{order.quantity}</td>
 
                   <td>
-                    <MdCurrencyRupee />
+                    <MdCurrencyRupee
+                      size={16}
+                      style={{ verticalAlign: "-2px" }}
+                    />
                     {order.price.toLocaleString()}
                   </td>
 
                   <td className="fw-semibold">
-                    <MdCurrencyRupee />
+                    <MdCurrencyRupee
+                      size={16}
+                      style={{ verticalAlign: "-2px" }}
+                    />
                     {(order.quantity * order.price).toLocaleString()}
                   </td>
 
                   <td>
-                    <span className="badge bg-primary">{order.status}</span>
+                    <span
+                      className="badge"
+                      style={{
+                        backgroundColor: "#EAF8F8",
+                        color: "#008080",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {order.status}
+                    </span>
                   </td>
 
                   <td>
-                    {new Date(order.createdAt).toLocaleDateString()}
+                    {(() => {
+                      const date = new Date(order.createdAt);
 
-                    <br />
+                      const formattedDate = `${String(date.getDate()).padStart(
+                        2,
+                        "0",
+                      )}-${String(date.getMonth() + 1).padStart(
+                        2,
+                        "0",
+                      )}-${date.getFullYear()}`;
 
-                    <small className="text-muted">
-                      {new Date(order.createdAt).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </small>
+                      return (
+                        <>
+                          <div style={{ fontWeight: 500 }}>{formattedDate}</div>
+
+                          <small
+                            style={{
+                              color: "#6B7280",
+                            }}
+                          >
+                            {date.toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </small>
+                        </>
+                      );
+                    })()}
                   </td>
                 </tr>
               ))}

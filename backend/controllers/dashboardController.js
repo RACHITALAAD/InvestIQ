@@ -30,7 +30,7 @@ const getDashboardData = async (req, res) => {
         portfolioValue,
         investedAmount,
         totalProfit,
-        availableFunds: fund ? fund.availableBalance : 0,
+        availableFunds: fund?.availableBalance || 0,
         holdingsCount: holdings.length,
       },
 

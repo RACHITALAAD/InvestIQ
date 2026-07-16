@@ -50,7 +50,7 @@ function ContactForm() {
             <h2
               className="fw-bold"
               style={{
-                fontSize: "28px",
+                fontSize: "24px",
                 color: "#008080",
               }}
             >
@@ -96,7 +96,7 @@ function ContactForm() {
                 rows="5"
                 className="form-control"
                 name="message"
-                placeholder="Tell us how we can help you..."
+                placeholder="Write your message here...."
                 value={formData.message}
                 onChange={handleChange}
               ></textarea>

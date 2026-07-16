@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 import {
   FaLinkedin,
   FaGithubSquare,
-  FaTwitterSquare,
   FaRegCopyright,
 } from "react-icons/fa";
 
 function Footer() {
   return (
     <footer
-      className="border-top mt-5 pt-5 pb-3"
+      className="border-top mt-5 pt-5 pb-4"
       style={{ background: "#F8FCFC" }}
     >
       <div className="container">
         <div className="row justify-content-between gy-4">
           {/* Brand */}
           <div className="col-lg-4">
-            <h3 className="fw-bold mb-3" style={{ color: "#008080" }}>
+            <h3 className="fw-bold mb-3" style={{ 
+              color: "#002e2e", fontSize: "21px"}}>
               InvestIQ
             </h3>
 
@@ -34,9 +34,8 @@ function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div className="col-lg-5">
-            <h5 className="fw-bold mb-3">Quick Links</h5>
+            <h3 className="fw-bold mb-3" style={{fontSize: "20px"}}>Quick Links</h3>
 
             <div className="d-flex flex-wrap gap-4">
               <Link
@@ -86,7 +85,7 @@ function Footer() {
 
           {/* Connect */}
           <div className="col-lg-3">
-            <h5 className="fw-bold mb-2">Connect</h5>
+            <h5 className="fw-bold mb-2" style={{fontSize: "20px"}}>Connect</h5>
 
             <div className="d-flex gap-4 fs-3">
               <a

@@ -35,6 +35,7 @@ function InvestIQ() {
           <h2
             className="fw-bold"
             style={{
+              fontSize: "28px",
               color: "#008080",
             }}
           >
@@ -48,7 +49,7 @@ function InvestIQ() {
             }}
           >
             InvestIQ brings together everything you need to manage your
-            investments through a simple, organized and easy to use platform
+            investments in one simple, organized and easy to use platform
           </p>
         </div>
 

@@ -19,7 +19,7 @@ function OpenAccount() {
           <h2
             className="fw-bold mb-3"
             style={{
-              fontSize: "25px",
+              fontSize: "24px",
               color: "#008080",
             }}
           >
@@ -35,7 +35,7 @@ function OpenAccount() {
             }}
           >
             Create your free InvestIQ account and start managing your portfolio
-            with a simple and intuitive investment dashboard
+            with a simple and intuitive dashboard
           </p>
 
           <Link

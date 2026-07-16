@@ -15,7 +15,7 @@ function FAQ() {
     {
       question: "How can I track my investments?",
       answer:
-        "Your dashboard provides portfolio value, holdings, recent transactions, and performance insights in one place.",
+        "Your dashboard provides ypur portfolio value, holdings, recent transactions, and performance insights in one place.",
     },
     {
       question: "Need additional help?",
@@ -30,7 +30,7 @@ function FAQ() {
           <h2
             className="fw-bold"
             style={{
-              fontSize: "28px",
+              fontSize: "24px",
               color: "#008080",
             }}
           >

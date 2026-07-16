@@ -32,27 +32,13 @@ function Insights() {
   return (
     <div className="container-fluid p-4">
       <div className="mb-4">
-        <h2
-          style={{
-            fontSize: "28px",
-            fontWeight: 600,
-            color: "#1F2937",
-            marginBottom: "6px",
-          }}
-        >
-          Portfolio Insights
+        <h2 className="fw-bold mb-1" style={{ fontSize: "1.6rem" }}>
+          Insights
         </h2>
 
-        <p
-          style={{
-            fontSize: "18px",
-            fontWeight: 400,
-            color: "#6B7280",
-            marginBottom: 0,
-          }}
-        >
-          Analyze your portfolio performance
-        </p>
+        <small className="text-muted">
+          Analyze your portfolio performance and market trends
+        </small>
       </div>
 
       <div className="row g-4 mb-4">
@@ -208,7 +194,9 @@ function Insights() {
 
       <div className="card border-0 shadow-sm rounded-4 mb-4">
         <div className="card-body">
-          <h4 className="fw-bold mb-4">Holdings Performance</h4>
+          <h4 className="fw-bold mb-4" style={{ fontSize: "20px" }}>
+            Holdings Performance
+          </h4>
 
           <table className="table table-hover align-middle">
             <thead className="table-light">
@@ -256,7 +244,7 @@ function Insights() {
         <div className="col-lg-6">
           <div className="card border-0 shadow-sm rounded-4">
             <div className="card-body">
-              <h4 className="fw-bold mb-4">Portfolio Statistics</h4>
+              <h4 className="fw-bold mb-4" style={{ fontSize: "20px" }}>Portfolio Statistics</h4>
 
               <div className="d-flex justify-content-between py-2 border-bottom">
                 <span>Total Holdings</span>
@@ -291,7 +279,7 @@ function Insights() {
         <div className="col-lg-6">
           <div className="card border-0 shadow-sm rounded-4">
             <div className="card-body">
-              <h4 className="fw-bold mb-4">Performance Summary</h4>
+              <h4 className="fw-bold mb-4" style={{ fontSize: "20px" }}>Performance Summary</h4>
 
               <div className="d-flex justify-content-between py-2 border-bottom">
                 <span>Best Performer</span>

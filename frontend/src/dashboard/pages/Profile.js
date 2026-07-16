@@ -61,7 +61,7 @@ function Profile() {
       <div className="mb-4">
         <h2
           style={{
-            fontSize: "30px",
+            fontSize: "28px",
             fontWeight: 680,
             color: "#1F2937",
             marginBottom: "6px",
@@ -108,6 +108,7 @@ function Profile() {
 
           <h2
             style={{
+              fontSize:"25px",
               fontWeight: 700,
               color: "#1F2937",
               marginBottom: "10px",

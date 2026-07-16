@@ -44,6 +44,7 @@ const getMarketStocks = async (req, res) => {
     const stocks = filteredStocks.slice(startIndex, endIndex);
 
     res.status(200).json({
+      success: true,
       page,
       totalPages,
       totalStocks,
@@ -51,7 +52,8 @@ const getMarketStocks = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: error.message,
+      success: false,
+      message: "Unable to fetch market data.",
     });
   }
 };
@@ -65,14 +67,19 @@ const getStockBySymbol = async (req, res) => {
 
     if (!stock) {
       return res.status(404).json({
+        success: false,
         message: "Stock not found",
       });
     }
 
-    res.status(200).json(stock);
+    res.status(200).json({
+      success: true,
+      stock,
+    });
   } catch (error) {
     res.status(500).json({
-      message: error.message,
+      success: false,
+      message: "Unable to fetch stock details.",
     });
   }
 };

@@ -78,7 +78,9 @@ function Market() {
 
   return (
     <div className="container-fluid p-4">
-      <h2 className="fw-bold mb-4">Market</h2>
+      <h2 className="fw-bold mb-4" style={{ fontSize: "1.6rem" }}>
+        Market
+      </h2>
 
       {/* Filters */}
 
@@ -133,8 +135,28 @@ function Market() {
           </select>
         </div>
 
-        <div className="col-md-2">
+        {/* <div className="col-md-2">
           <button className="btn btn-primary w-100" onClick={handleSearch}>
+            Search
+          </button>
+        </div> */}
+        <div className="col-md-2">
+          <button
+            className="btn w-100 text-white"
+            style={{
+              backgroundColor: "#0b5061",
+              borderColor: "#036d6d",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#006666";
+              e.currentTarget.style.borderColor = "#006666";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#008080";
+              e.currentTarget.style.borderColor = "#008080";
+            }}
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>

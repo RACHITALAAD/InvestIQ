@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaWallet, FaChartLine, FaCoins } from "react-icons/fa";
 import { MdCurrencyRupee } from "react-icons/md";
 
 import { getHoldings } from "../../api/holdings";
@@ -69,8 +70,11 @@ function Holdings() {
 
   if (loading) {
     return (
-      <div className="container-fluid p-4">
-        <h3>Loading Holdings...</h3>
+      <div
+        className="container-fluid p-4"
+        style={{ background: "#F8FAFC", minHeight: "100vh" }}
+      >
+        <h4>Loading Holdings...</h4>
       </div>
     );
   }
@@ -88,53 +92,174 @@ function Holdings() {
   const totalProfit = totalCurrentValue - totalInvestment;
 
   return (
-    <div className="container-fluid p-4">
-      <h2 className="fw-bold mb-4">My Holdings</h2>
+    <div
+      className="container-fluid p-4"
+      style={{ background: "#F8FAFC", minHeight: "100vh" }}
+    >
+      <div className="mb-4">
+        <h2
+          style={{
+            fontSize: "28px",
+            fontWeight: 700,
+            color: "#1F2937",
+            marginBottom: "6px",
+          }}
+        >
+          Holdings
+        </h2>
 
-      <div className="row mb-4">
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0 rounded-4">
-            <div className="card-body">
-              <small className="text-muted">Total Investment</small>
+        <p
+          style={{
+            fontSize: "16px",
+            color: "#6B7280",
+            marginBottom: 0,
+          }}
+        >
+          Track and manage your investment portfolio.
+        </p>
+      </div>
 
-              <h4 className="fw-bold mt-2">
-                <MdCurrencyRupee />
-                {totalInvestment.toLocaleString()}
-              </h4>
-            </div>
-          </div>
-        </div>
+      <div className="row g-4 mb-4">
+        <div className="col-lg-4 col-md-6">
+          <div
+            className="rounded-4 shadow-sm border-0 h-100 p-4"
+            style={{
+              background: "#F8FCFC",
+              transition: "all 0.3s ease",
+              cursor: "default",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 12px 25px rgba(0,0,0,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "";
+            }}
+          >
+            <div className="d-flex align-items-center gap-2">
+              <FaWallet size={28} style={{ color: "#008080" }} />
 
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0 rounded-4">
-            <div className="card-body">
-              <small className="text-muted">Current Value</small>
-
-              <h4 className="fw-bold mt-2 text-primary">
-                <MdCurrencyRupee />
-                {totalCurrentValue.toLocaleString()}
-              </h4>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0 rounded-4">
-            <div className="card-body">
-              <small className="text-muted">Overall Profit / Loss</small>
-
-              <h4
-                className={`fw-bold mt-2 ${
-                  totalProfit >= 0 ? "text-success" : "text-danger"
-                }`}
+              <small
+                className="text-muted"
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 500,
+                }}
               >
-                <MdCurrencyRupee />
-                {totalProfit.toLocaleString()}
-              </h4>
+                Total Investment
+              </small>
             </div>
+
+            <h3
+              className="mt-3 mb-0 d-flex align-items-center"
+              style={{
+                fontSize: "25px",
+                fontWeight: 650,
+                color: "#1F2937",
+              }}
+            >
+              <MdCurrencyRupee size={24} style={{ marginRight: "2px" }} />
+              {totalInvestment.toLocaleString()}
+            </h3>
+          </div>
+        </div>
+
+        <div className="col-lg-4 col-md-6">
+          <div
+            className="rounded-4 shadow-sm border-0 h-100 p-4"
+            style={{
+              background: "#F8FCFC",
+              transition: "all 0.3s ease",
+              cursor: "default",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 12px 25px rgba(0,0,0,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "";
+            }}
+          >
+            <div className="d-flex align-items-center gap-2">
+              <FaCoins size={28} style={{ color: "#F4B400" }} />
+
+              <small
+                className="text-muted"
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 500,
+                }}
+              >
+                Current Value
+              </small>
+            </div>
+
+            <h3
+              className="mt-3 mb-0 d-flex align-items-center"
+              style={{
+                fontSize: "25px",
+                fontWeight: 650,
+                color: "#1F2937",
+              }}
+            >
+              <MdCurrencyRupee size={24} style={{ marginRight: "2px" }} />
+              {totalCurrentValue.toLocaleString()}
+            </h3>
+          </div>
+        </div>
+
+        <div className="col-lg-4 col-md-6">
+          <div
+            className="rounded-4 shadow-sm border-0 h-100 p-4"
+            style={{
+              background: "#F8FCFC",
+              transition: "all 0.3s ease",
+              cursor: "default",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 12px 25px rgba(0,0,0,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "";
+            }}
+          >
+            <div className="d-flex align-items-center gap-2">
+              <FaChartLine
+                size={28}
+                className={totalProfit >= 0 ? "text-success" : "text-danger"}
+              />
+
+              <small
+                className="text-muted"
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 500,
+                }}
+              >
+                Overall Profit / Loss
+              </small>
+            </div>
+
+            <h3
+              className={`mt-3 mb-0 d-flex align-items-center ${
+                totalProfit >= 0 ? "text-success" : "text-danger"
+              }`}
+              style={{
+                fontSize: "25px",
+                fontWeight: 650,
+              }}
+            >
+              <MdCurrencyRupee size={24} style={{ marginRight: "2px" }} />
+              {totalProfit.toLocaleString()}
+            </h3>
           </div>
         </div>
       </div>
+      
 
       <div className="bg-white rounded shadow-sm p-4">
         <table className="table table-hover align-middle">

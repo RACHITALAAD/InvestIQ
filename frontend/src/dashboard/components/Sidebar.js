@@ -10,6 +10,7 @@ import {
   FaChartLine,
   FaClipboardList,
   FaWallet,
+  FaCoins,
   FaLightbulb,
   FaUserCircle,
   FaSignOutAlt,
@@ -44,7 +45,7 @@ function Sidebar() {
     {
       name: "Holdings",
       path: "/dashboard/holdings",
-      icon: <FaHandHoldingUsd />,
+      icon: <FaBriefcase />,
     },
     {
       name: "Orders",
@@ -54,7 +55,7 @@ function Sidebar() {
     {
       name: "Funds",
       path: "/dashboard/funds",
-      icon: <RiExchangeFundsFill />,
+      icon: <FaCoins />,
     },
     {
       name: "Insights",

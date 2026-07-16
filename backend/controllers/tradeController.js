@@ -8,6 +8,13 @@ const buyStock = async (req, res) => {
     const quantity = Number(req.body.quantity);
     const price = Number(req.body.price);
 
+    if(!stock || quantity <= 0 || price <= 0){
+      return res.status(400).json({
+        success: false,
+        message: "Invalid trade details",
+      });
+    }
+
     const userId = req.user.userId;
 
     const totalCost = quantity * price;
@@ -17,12 +24,14 @@ const buyStock = async (req, res) => {
     });
     if (!fund) {
       return res.status(404).json({
+        success: false,
         message: "Fund account not found",
       });
     }
 
     if (fund.availableBalance < totalCost) {
       return res.status(400).json({
+        success: false,
         message: "Insufficient Balance",
       });
     }
@@ -74,6 +83,7 @@ const buyStock = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }
@@ -85,6 +95,13 @@ const sellStock = async (req, res) => {
     const quantity = Number(req.body.quantity);
     const price = Number(req.body.price);
 
+    if(!stock || quantity <= 0 || price <= 0){
+      return res.status(400).json({
+        success: false,
+        message: "Invalid trade details",
+      });
+    }
+
     const userId = req.user.userId;
 
     const existingHolding = await Holding.findOne({
@@ -94,11 +111,13 @@ const sellStock = async (req, res) => {
 
     if (!existingHolding) {
       return res.status(404).json({
+        success: false,
         message: "Stock not found in portfolio",
       });
     }
     if (existingHolding.quantity < quantity) {
       return res.status(400).json({
+        success: false,
         message: "Not enough shares to sell",
       });
     }
@@ -108,6 +127,7 @@ const sellStock = async (req, res) => {
     });
     if (!fund) {
       return res.status(404).json({
+        success: false,
         message: "Fund account not found",
       });
     }
@@ -141,6 +161,7 @@ const sellStock = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: error.message,
     });
   }

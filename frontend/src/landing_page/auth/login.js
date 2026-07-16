@@ -11,6 +11,8 @@ function Login() {
   });
 
   const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -23,18 +25,23 @@ function Login() {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const response = await loginUser(formData);
 
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user" , JSON.stringify(response.data.user));
-      
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
+      setSuccess(true);
       setMessage("Login Successful");
 
       setTimeout(() => {
         navigate("/dashboard");
       }, 1000);
     } catch (error) {
+      setSuccess(false);
       setMessage(error.response?.data?.message || "Login Failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,7 +63,13 @@ function Login() {
         </p>
 
         {message && (
-          <div className="alert alert-info text-center">{message}</div>
+          <div
+            className={`alert ${
+              success ? "alert-success" : "alert-danger"
+            } text-center`}
+          >
+            {message}
+          </div>
         )}
 
         <form onSubmit={handleSubmit}>
@@ -90,6 +103,7 @@ function Login() {
 
           <button
             type="submit"
+            disabled={loading}
             className="btn w-100 fw-semibold"
             style={{
               backgroundColor: "#008080",
@@ -98,7 +112,7 @@ function Login() {
               padding: "10px",
             }}
           >
-            Sign In
+             {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
 

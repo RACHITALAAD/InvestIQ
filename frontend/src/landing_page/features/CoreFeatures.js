@@ -1,4 +1,5 @@
 import React from "react";
+import { RiDashboardHorizontalFill } from "react-icons/ri";
 
 import {
   FaChartPie,
@@ -12,7 +13,7 @@ import {
 function CoreFeatures() {
   const features = [
     {
-      icon: <FaChartPie />,
+      icon: <RiDashboardHorizontalFill />,
       title: "Dashboard",
       desc: "Get an overview of your portfolio, available funds, performance, and recent transactions in one place.",
     },
@@ -20,7 +21,7 @@ function CoreFeatures() {
     {
       icon: <FaBriefcase />,
       title: "Holdings",
-      desc: "View your current holdings, investment value, profit or loss, and manage buy or sell transactions.",
+      desc: "View your current holdings, investment value, profit or loss, and easily buy or sell stocks.",
     },
 
     {
@@ -32,7 +33,7 @@ function CoreFeatures() {
     {
       icon: <FaWallet />,
       title: "Funds",
-      desc: "Monitor your available balance, invested amount, and withdrawable funds from a single page.",
+      desc: "Monitor your available balance, invested amount, and withdrawable balance from a single page.",
     },
 
     {
@@ -68,8 +69,7 @@ function CoreFeatures() {
               maxWidth: "700px",
             }}
           >
-            Explore the tools available to manage your portfolio, monitor funds,
-            track investments, and review your trading activity.
+            Explore the tools designed to help you manage your portfolio, monitor your funds, track investments, and review your trading activity.
           </p>
         </div>
 

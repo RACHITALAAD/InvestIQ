@@ -12,6 +12,8 @@ function Signup() {
   });
 
   const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,14 +26,21 @@ function Signup() {
     e.preventDefault();
 
     try {
+      setLoading(true);
+
       const response = await signupUser(formData);
+
+      setSuccess(true);
       setMessage(response.data.message);
 
       setTimeout(() => {
         navigate("/login");
       }, 1500);
     } catch (error) {
+      setSuccess(false);
       setMessage(error.response?.data?.message || "Signup Failed");
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -51,8 +60,14 @@ function Signup() {
           Create your account and start investing smarter.
         </p>
 
-        {message && (
-          <div className="alert alert-info text-center">{message}</div>
+         {message && (
+          <div
+            className={`alert ${
+              success ? "alert-success" : "alert-danger"
+            } text-center`}
+          >
+            {message}
+          </div>
         )}
 
         <form onSubmit={handleSubmit}>
@@ -97,6 +112,7 @@ function Signup() {
 
           <button
             type="submit"
+            disabled={loading}
             className="btn w-100 fw-semibold"
             style={{
               backgroundColor: "#008080",
@@ -105,7 +121,7 @@ function Signup() {
               padding: "10px",
             }}
           >
-            Create Account
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 
