@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3002/api/holdings",
+  baseURL: "https://investiq-backend-nr86.onrender.com/api/holdings",
 });
 
 API.interceptors.request.use((req) => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3002/api/trade",
+  baseURL: "https://investiq-backend-nr86.onrender.com/api/trade",
 });
 
 API.interceptors.request.use((req) => {
