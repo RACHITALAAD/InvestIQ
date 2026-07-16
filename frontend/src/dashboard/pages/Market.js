@@ -78,7 +78,7 @@ function Market() {
 
   return (
     <div className="container-fluid p-4">
-      <h2 className="fw-bold mb-4" style={{ fontSize: "1.6rem" }}>
+      <h2 className="fw-bold mb-4" style={{ fontSize: "25px" }}>
         Market
       </h2>
 

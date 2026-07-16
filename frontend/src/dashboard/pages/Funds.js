@@ -27,7 +27,6 @@ function Funds() {
     );
   }
 
-  // Safe values (prevents toLocaleString() error)
   const availableBalance = funds.availableBalance || 0;
   const investedAmount = funds.investedAmount || 0;
   const withdrawableAmount = funds.withdrawableAmount || 0;
@@ -44,7 +43,7 @@ function Funds() {
       <div className="mb-4">
         <h2
           style={{
-            fontSize: "28px",
+            fontSize: "25px",
             fontWeight: 700,
             color: "#1F2937",
             marginBottom: "6px",

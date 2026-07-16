@@ -56,12 +56,11 @@ function Profile() {
 
   return (
     <div className="container-fluid p-4">
-      {/* Heading */}
 
       <div className="mb-4">
         <h2
           style={{
-            fontSize: "28px",
+            fontSize: "25px",
             fontWeight: 680,
             color: "#1F2937",
             marginBottom: "6px",
@@ -82,15 +81,12 @@ function Profile() {
         </p>
       </div>
 
-      {/* Main Card */}
-
       <div
         className="bg-white rounded-4 shadow-sm p-5"
         style={{
           border: "1px solid #EDF2F7",
         }}
       >
-        {/* Profile Header */}
 
         <div className="text-center">
           <div
@@ -129,10 +125,7 @@ function Profile() {
           </p>
         </div>
 
-        {/* Information Cards */}
-
         <div className="row g-4">
-          {/* Username */}
 
           <div className="col-lg-4 col-md-6">
             <div
@@ -167,8 +160,6 @@ function Profile() {
             </div>
           </div>
 
-          {/* Email */}
-
           <div className="col-lg-4 col-md-6">
             <div
               style={cardStyle}
@@ -202,8 +193,6 @@ function Profile() {
               </p>
             </div>
           </div>
-
-          {/* Member Since */}
 
           <div className="col-lg-4 col-md-12">
             <div

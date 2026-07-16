@@ -93,8 +93,8 @@ function Summary({ data }) {
              <h4
               className="mt-3 mb-0"
               style={{
-                fontSize: "26px",
-                fontWeight: 700,
+                fontSize: "24px",
+                fontWeight: 650,
                 color: card.color || "#1F2937",
               }}
             >

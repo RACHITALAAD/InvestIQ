@@ -42,7 +42,7 @@ function Orders() {
       <div className="mb-4">
         <h2
           style={{
-            fontSize: "25px",
+            fontSize: "24px",
             fontWeight: 680,
             color: "#1F2937",
             marginBottom: "6px",
@@ -148,7 +148,7 @@ function Orders() {
         style={{ background: "#F8FAFC" }}
       >
         <div className="mb-4">
-          <h4 className="fw-bold mb-1">Order Details</h4>
+          <h3 className="fw-bold mb-1" style={{fontSize: "23px"}}>Order Details</h3>
 
           <small className="text-muted">
             Complete history of your executed trades

@@ -99,7 +99,7 @@ function Holdings() {
       <div className="mb-4">
         <h2
           style={{
-            fontSize: "28px",
+            fontSize: "25px",
             fontWeight: 700,
             color: "#1F2937",
             marginBottom: "6px",
@@ -280,7 +280,7 @@ function Holdings() {
             {holdings.length === 0 ? (
               <tr>
                 <td colSpan="8" className="text-center py-5">
-                  No Holdings Found
+                  No holdings available
                 </td>
               </tr>
             ) : (
