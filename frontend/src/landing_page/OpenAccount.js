@@ -19,7 +19,7 @@ function OpenAccount() {
           <h2
             className="fw-bold mb-3"
             style={{
-              fontSize: "23px",
+              fontSize: "22px",
               color: "#008080",
             }}
           >

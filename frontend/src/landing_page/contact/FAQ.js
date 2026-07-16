@@ -30,7 +30,7 @@ function FAQ() {
           <h2
             className="fw-bold"
             style={{
-              fontSize: "23px",
+              fontSize: "22px",
               color: "#008080",
             }}
           >

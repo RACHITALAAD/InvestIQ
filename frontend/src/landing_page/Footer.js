@@ -15,10 +15,9 @@ function Footer() {
     >
       <div className="container">
         <div className="row justify-content-between gy-4">
-          {/* Brand */}
           <div className="col-lg-4">
             <h3 className="fw-bold mb-3" style={{ 
-              color: "#002e2e", fontSize: "21px"}}>
+              color: "#111111", fontSize: "20px"}}>
               InvestIQ
             </h3>
 
@@ -35,7 +34,7 @@ function Footer() {
           </div>
 
           <div className="col-lg-5">
-            <h3 className="fw-bold mb-3" style={{fontSize: "20px"}}>Quick Links</h3>
+            <h3 className="fw-bold mb-3" style={{color: "#111111" , fontSize: "20px"}}>Quick Links</h3>
 
             <div className="d-flex flex-wrap gap-4">
               <Link
@@ -74,8 +73,8 @@ function Footer() {
                 to="/signup"
                 className="text-decoration-none"
                 style={{
-                  color: "#008080",
-                  fontWeight: "600",
+                  color: "#6c757d",
+                  fontWeight: "500",
                 }}
               >
                 Get Started
@@ -83,9 +82,8 @@ function Footer() {
             </div>
           </div>
 
-          {/* Connect */}
           <div className="col-lg-3">
-            <h5 className="fw-bold mb-2" style={{fontSize: "20px"}}>Connect</h5>
+            <h5 className="fw-bold mb-2" style={{color: "#111111" , fontSize: "20px"}}>Connect</h5>
 
             <div className="d-flex gap-4 fs-3">
               <a

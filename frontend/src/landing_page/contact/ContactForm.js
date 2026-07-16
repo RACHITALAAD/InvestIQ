@@ -50,7 +50,7 @@ function ContactForm() {
             <h2
               className="fw-bold"
               style={{
-                fontSize: "24px",
+                fontSize: "23px",
                 color: "#008080",
               }}
             >
