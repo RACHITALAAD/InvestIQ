@@ -54,6 +54,7 @@ function Orders() {
         <p
           style={{
             fontSize: "16px",
+            fontWeight: 400,
             color: "#6B7280",
             marginBottom: 0,
           }}

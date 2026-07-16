@@ -72,9 +72,10 @@ function Profile() {
         <p
           className="text-muted"
           style={{
-            fontSize: "18px",
-            fontWeight: 480,
-            color: "#333436",
+            fontSize: "16px",
+            fontWeight: 400,
+            color: "#6B7280",
+            marginBottom: 0,
           }}
         >
           Manage your account information

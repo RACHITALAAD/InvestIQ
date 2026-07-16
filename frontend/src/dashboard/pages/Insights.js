@@ -36,9 +36,17 @@ function Insights() {
           Insights
         </h2>
 
-        <small className="text-muted">
+        <p
+          className="text-muted"
+          style={{
+            fontSize: "16px",
+            fontWeight: 400,
+            color: "#6B7280",
+            marginBottom: 0,
+          }}
+        >
           Analyze your portfolio performance and market trends
-        </small>
+        </p>
       </div>
 
       <div className="row g-4 mb-4">
@@ -244,7 +252,9 @@ function Insights() {
         <div className="col-lg-6">
           <div className="card border-0 shadow-sm rounded-4">
             <div className="card-body">
-              <h4 className="fw-bold mb-4" style={{ fontSize: "20px" }}>Portfolio Statistics</h4>
+              <h4 className="fw-bold mb-4" style={{ fontSize: "20px" }}>
+                Portfolio Statistics
+              </h4>
 
               <div className="d-flex justify-content-between py-2 border-bottom">
                 <span>Total Holdings</span>
@@ -279,7 +289,9 @@ function Insights() {
         <div className="col-lg-6">
           <div className="card border-0 shadow-sm rounded-4">
             <div className="card-body">
-              <h4 className="fw-bold mb-4" style={{ fontSize: "20px" }}>Performance Summary</h4>
+              <h4 className="fw-bold mb-4" style={{ fontSize: "20px" }}>
+                Performance Summary
+              </h4>
 
               <div className="d-flex justify-content-between py-2 border-bottom">
                 <span>Best Performer</span>

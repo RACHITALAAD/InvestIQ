@@ -93,7 +93,7 @@ function Dashboard() {
         <div>
           <h2
             style={{
-              fontSize: "28px",
+              fontSize: "25px",
               fontWeight: 700,
               color: "#1F2937",
               marginBottom: "6px",
@@ -110,7 +110,7 @@ function Dashboard() {
               marginBottom: 0,
             }}
           >
-            Monitor your portfolio performance and recent trading activity.
+            Monitor your portfolio performance and recent trading activity
           </p>
         </div>
 
@@ -130,10 +130,8 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Summary Cards */}
       <Summary data={dashboardData.summary} />
 
-      {/* Charts */}
       <div className="row mt-4">
         <div className="col-lg-8 mb-4">
           <PortfolioChart holdings={dashboardData.holdings} />
@@ -144,7 +142,6 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Recent Orders */}
       <RecentTransactions orders={dashboardData.recentOrders} />
     </div>
   );

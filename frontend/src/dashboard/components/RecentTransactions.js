@@ -7,6 +7,7 @@ function RecentTransactions({ orders = [] }) {
       <div className="mb-4">
         <h4
           style={{
+            fontSize: "23px",
             color: "#1F2937",
             fontWeight: 700,
             marginBottom: "4px",

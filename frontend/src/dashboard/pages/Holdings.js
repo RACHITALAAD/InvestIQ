@@ -111,11 +111,12 @@ function Holdings() {
         <p
           style={{
             fontSize: "16px",
+            fontWeight: 400,
             color: "#6B7280",
             marginBottom: 0,
           }}
         >
-          Track and manage your investment portfolio.
+          Track and manage your investment portfolio
         </p>
       </div>
 

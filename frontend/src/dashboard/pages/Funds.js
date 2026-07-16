@@ -55,11 +55,12 @@ function Funds() {
         <p
           style={{
             fontSize: "16px",
+            fontWeight: 400,
             color: "#6B7280",
             marginBottom: 0,
           }}
         >
-          Manage your trading capital and portfolio balance.
+          Manage your trading capital and portfolio balance
         </p>
       </div>
 
@@ -115,8 +116,6 @@ function Funds() {
           </div>
         </div>
 
-        {/* Invested Amount */}
-
         <div className="col-lg-4 col-md-6">
           <div
             className="rounded-4 shadow-sm border-0 h-100 p-4"
@@ -164,7 +163,6 @@ function Funds() {
           </div>
         </div>
 
-        {/* Withdrawable Balance */}
 
         <div className="col-lg-4 col-md-6">
           <div
@@ -214,8 +212,6 @@ function Funds() {
         </div>
       </div>
 
-      {/* Portfolio Summary */}
-
       <div
         className="rounded-4 shadow-sm p-4 mt-5"
         style={{
@@ -237,7 +233,7 @@ function Funds() {
             <h4
               className="fw-semibold mt-2"
               style={{
-                fontSize: "23px",
+                fontSize: "22px",
                 color: "#1F2937",
                 display: "flex",
                 alignItems: "center",
@@ -260,7 +256,7 @@ function Funds() {
             <h4
               className="fw-semibold mt-2"
               style={{
-                fontSize: "23px",
+                fontSize: "22px",
                 color: "#008080",
               }}
             >

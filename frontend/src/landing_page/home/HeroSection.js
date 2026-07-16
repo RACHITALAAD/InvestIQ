@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import heroImage from "../../assets/dashboard.png";
+// import heroImage from "../../assets/dashboard.png";
+import heroImage from "../../assets/DashboardInvestIQ.png";
 
 function HeroSection() {
   return (

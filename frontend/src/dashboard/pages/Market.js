@@ -78,11 +78,22 @@ function Market() {
 
   return (
     <div className="container-fluid p-4">
-      <h2 className="fw-bold mb-4" style={{ fontSize: "25px" }}>
+      <h2 className="fw-bold mb-2" style={{ fontSize: "25px" }}>
         Market
       </h2>
 
-      {/* Filters */}
+      <p
+        className="text-muted mb-4"
+        style={{
+          fontSize: "16px",
+          fontWeight: 400,
+          color: "#6B7280",
+          marginBottom: 0,
+        }}
+      >
+        Browse available stocks and monitor current market prices
+      </p>
+
 
       <div className="row mb-4">
         <div className="col-md-4">
@@ -162,7 +173,6 @@ function Market() {
         </div>
       </div>
 
-      {/* Table */}
 
       <div className="bg-white rounded shadow-sm">
         <table className="table table-hover align-middle mb-0">
@@ -219,7 +229,6 @@ function Market() {
         </table>
       </div>
 
-      {/* Pagination */}
 
       <div className="d-flex justify-content-center mt-4">
         <button
