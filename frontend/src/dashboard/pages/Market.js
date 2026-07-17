@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 import { getMarketStocks } from "../../api/market";
 import { buyStock } from "../../api/trade";
@@ -18,12 +18,11 @@ function Market() {
   const [showModal, setShowModal] = useState(false);
   const [selectedStock, setSelectedStock] = useState(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchStocks();
-  }, [page, sector, marketCap]);
-  
-  const fetchStocks = async () => {
+  }, [fetchStocks]);
+
+  const fetchStocks = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -41,7 +40,7 @@ function Market() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, search, sector, marketCap]);
 
   const handleSearch = () => {
     setPage(1);
