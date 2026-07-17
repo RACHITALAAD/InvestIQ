@@ -15,7 +15,7 @@ function Navbar() {
         >
           <img
             src={logoImage}
-            alt="InvestIQ Logo Image"
+            alt="InvestIQ Logo"
             className="img"
             style={{ width: "48px", marginRight: "10px" }}
           />

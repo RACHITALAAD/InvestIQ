@@ -20,6 +20,7 @@ function Market() {
 
   useEffect(() => {
     fetchStocks();
+    
   }, [page, sector, marketCap]);
 
   const fetchStocks = async () => {

@@ -2,7 +2,6 @@ import React from "react";
 import { RiDashboardHorizontalFill } from "react-icons/ri";
 
 import {
-  FaChartPie,
   FaBriefcase,
   FaClipboardList,
   FaWallet,

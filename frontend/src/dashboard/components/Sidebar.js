@@ -1,15 +1,10 @@
 import React from "react";
 import { RiDashboardHorizontalFill } from "react-icons/ri";
-import { FaHandHoldingUsd } from "react-icons/fa";
-import { RiExchangeFundsFill } from "react-icons/ri";
 
 import {
-  FaChartPie,
   FaBriefcase,
   FaChartBar,
-  FaChartLine,
   FaClipboardList,
-  FaWallet,
   FaCoins,
   FaLightbulb,
   FaUserCircle,
@@ -21,8 +16,6 @@ import logoImage from "../../assets/logo2.png";
 function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
-
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -90,7 +83,7 @@ function Sidebar() {
         >
           <img
             src={logoImage}
-            alt="InvestIQ Logo Image"
+            alt="InvestIQ Logo"
             className="img"
             style={{ width: "48px", marginRight: "10px" }}
           />
