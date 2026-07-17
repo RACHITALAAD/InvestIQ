@@ -18,11 +18,11 @@ function Market() {
   const [showModal, setShowModal] = useState(false);
   const [selectedStock, setSelectedStock] = useState(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchStocks();
-    
   }, [page, sector, marketCap]);
-
+  
   const fetchStocks = async () => {
     try {
       setLoading(true);
@@ -94,7 +94,6 @@ function Market() {
       >
         Browse available stocks and monitor current market prices
       </p>
-
 
       <div className="row mb-4">
         <div className="col-md-4">
@@ -174,7 +173,6 @@ function Market() {
         </div>
       </div>
 
-
       <div className="bg-white rounded shadow-sm">
         <table className="table table-hover align-middle mb-0">
           <thead className="table-light">
@@ -229,7 +227,6 @@ function Market() {
           </tbody>
         </table>
       </div>
-
 
       <div className="d-flex justify-content-center mt-4">
         <button
