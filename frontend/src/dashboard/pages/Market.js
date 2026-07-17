@@ -18,10 +18,6 @@ function Market() {
   const [showModal, setShowModal] = useState(false);
   const [selectedStock, setSelectedStock] = useState(null);
 
-  useEffect(() => {
-    fetchStocks();
-  }, [fetchStocks]);
-
   const fetchStocks = useCallback(async () => {
     try {
       setLoading(true);
@@ -41,6 +37,11 @@ function Market() {
       setLoading(false);
     }
   }, [page, search, sector, marketCap]);
+
+  useEffect(() => {
+    fetchStocks();
+  }, [fetchStocks]);
+
 
   const handleSearch = () => {
     setPage(1);
