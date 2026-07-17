@@ -80,7 +80,7 @@ function Login() {
               type="email"
               name="email"
               className="form-control py-2"
-              placeholder="Enter your email...."
+              placeholder="Enter your email....."
               value={formData.email}
               onChange={handleChange}
               required
